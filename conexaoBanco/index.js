@@ -13,6 +13,14 @@ const app = express();
 app.use(express.json())
 
 
+// Rota para listar todos os clientes
+app.get('/client', async (req, res) => {
+    // Chama a função que seleciona os clientes no banco de dados
+    const clientes = await db.selectCustomer();
+    // Envia a resposta em formato JSON contendo os clientes
+    res.json(clientes);
+    });
+
 
 //Criar a rota que vai enviar a requesição para a função  requesição
 //app é o objeto  (mandar algm coisa para o banco e pedir uma resposta: assincrona "async")
